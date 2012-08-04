@@ -1,0 +1,7 @@
+Adding location privacy to facebook by increasing transparency and control over the exact location data that's being sent to the facebook Android app.
+
+What we do is modify the Facebook app (the .apk file) so that it starts to use our custom OverrideLocationManager service instead of the default Android LocationManager. This way, we can provide an interface for users to choose the kinds of location data that's sent to facebook.
+
+We provide two apks. First, there's the custom location provider that produces location data according to the user's preferences. Second, there a modified facebook apk which is configured to use our locations. 
+
+We don't have any nice UI for the user to configure his preferences yet! As a proof-of-concept, we currently have the systems set up to provide facebook locations near the Empire State in NYC, and it proceeds to randomnly walk around the city. Facebook will see these locations, and NOT the actual GPS location of the user.
