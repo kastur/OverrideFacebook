@@ -17,7 +17,7 @@
 
 .field protected static b:Lcom/facebook/katana/util/FBLocationManager$LocationDispatcher;
 
-.field protected static volatile c:Landroid/location/LocationManager;
+.field protected static volatile c:Landroid/override/OverrideLocationManager;
 
 .field protected static volatile d:Ljava/lang/Runnable;
 
@@ -721,15 +721,15 @@
 
     .line 117
     :try_start_0
-    sget-object v1, Lcom/facebook/katana/util/FBLocationManager;->c:Landroid/location/LocationManager;
+    sget-object v1, Lcom/facebook/katana/util/FBLocationManager;->c:Landroid/override/OverrideLocationManager;
 
     if-eqz v1, :cond_0
 
-    sget-object v1, Lcom/facebook/katana/util/FBLocationManager;->c:Landroid/location/LocationManager;
+    sget-object v1, Lcom/facebook/katana/util/FBLocationManager;->c:Landroid/override/OverrideLocationManager;
 
     const-string v2, "gps"
 
-    invoke-virtual {v1, v2}, Landroid/location/LocationManager;->isProviderEnabled(Ljava/lang/String;)Z
+    invoke-virtual {v1, v2}, Landroid/override/OverrideLocationManager;->isProviderEnabled(Ljava/lang/String;)Z
     :try_end_0
     .catch Ljava/lang/IllegalArgumentException; {:try_start_0 .. :try_end_0} :catch_0
 
@@ -769,15 +769,15 @@
 
     .line 133
     :try_start_0
-    sget-object v1, Lcom/facebook/katana/util/FBLocationManager;->c:Landroid/location/LocationManager;
+    sget-object v1, Lcom/facebook/katana/util/FBLocationManager;->c:Landroid/override/OverrideLocationManager;
 
     if-eqz v1, :cond_0
 
-    sget-object v1, Lcom/facebook/katana/util/FBLocationManager;->c:Landroid/location/LocationManager;
+    sget-object v1, Lcom/facebook/katana/util/FBLocationManager;->c:Landroid/override/OverrideLocationManager;
 
     const-string v2, "network"
 
-    invoke-virtual {v1, v2}, Landroid/location/LocationManager;->isProviderEnabled(Ljava/lang/String;)Z
+    invoke-virtual {v1, v2}, Landroid/override/OverrideLocationManager;->isProviderEnabled(Ljava/lang/String;)Z
     :try_end_0
     .catch Ljava/lang/IllegalArgumentException; {:try_start_0 .. :try_end_0} :catch_0
 
@@ -872,7 +872,7 @@
 
     .prologue
     .line 85
-    sget-object v0, Lcom/facebook/katana/util/FBLocationManager;->c:Landroid/location/LocationManager;
+    sget-object v0, Lcom/facebook/katana/util/FBLocationManager;->c:Landroid/override/OverrideLocationManager;
 
     if-eqz v0, :cond_0
 
@@ -888,20 +888,20 @@
 
     .line 89
     :try_start_0
-    sget-object v0, Lcom/facebook/katana/util/FBLocationManager;->c:Landroid/location/LocationManager;
+    sget-object v0, Lcom/facebook/katana/util/FBLocationManager;->c:Landroid/override/OverrideLocationManager;
 
     if-nez v0, :cond_1
 
     .line 90
-    const-string v0, "location"
-
-    invoke-virtual {p0, v0}, Landroid/content/Context;->getSystemService(Ljava/lang/String;)Ljava/lang/Object;
-
-    move-result-object v0
-
-    check-cast v0, Landroid/location/LocationManager;
-
-    sput-object v0, Lcom/facebook/katana/util/FBLocationManager;->c:Landroid/location/LocationManager;
+    #const-string v0, "location"
+	#invoke-virtual {p0, v0}, Landroid/content/Context;->getSystemService(Ljava/lang/String;)Ljava/lang/Object;
+	#move-result-object v0
+	#check-cast v0, Landroid/location/LocationManager;
+	#sput-object v0, Lcom/facebook/katana/util/FBLocationManager;->c:Landroid/override/OverrideLocationManager;
+	
+	new-instance v0, Landroid/override/OverrideLocationManager;
+	invoke-direct {v0, p0}, Landroid/override/OverrideLocationManager;-><init>(Landroid/content/Context;)V
+	sput-object v0, Lcom/facebook/katana/util/FBLocationManager;->c:Landroid/override/OverrideLocationManager;
 
     .line 94
     :cond_1
