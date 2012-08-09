@@ -1,1 +1,1 @@
-./apktool/apktool decode --no-res apk/original_facebook197.apk intermediate/original_facebook
+apktool decode --no-res apk/original_facebook197.apk facebook_decoded
